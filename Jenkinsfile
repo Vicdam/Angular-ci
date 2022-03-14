@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+    // this image provides everything needed to run Cypress
+    docker {
+      image 'cypress/base:10'
+    }
+  }
 
     tools {nodejs "node"}
 
@@ -11,6 +16,8 @@ pipeline {
         stage('Dependencies') {
             steps {
                 sh 'npm i'
+                sh 'npm ci'
+                sh 'npm run cy:verify'
             }
         }
         stage('Build') {
@@ -25,7 +32,7 @@ pipeline {
                 // sh 'npx cypress install --force'
                 // sh 'node_modules/.bin/cypress open'
                 // sh 'node_modules/.bin/cypress run'
-                sh 'cypress run'
+                sh "npm run test:ci:record"
             }
         }
         stage('Deploy') {
