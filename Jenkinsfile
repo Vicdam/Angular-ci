@@ -23,7 +23,8 @@ pipeline {
             steps {
                 // sh 'npm run cypress:ci' //depreciated
                 sh 'npx cypress install --force'
-                sh 'cypress run --record'
+                sh 'node_modules/.bin/cypress run'
+                // sh 'cypress run --record'
             }
         }
         stage('Deploy') {
