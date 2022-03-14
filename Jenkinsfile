@@ -22,8 +22,8 @@ pipeline {
         stage('e2e Tests') {
             steps {
                 // sh 'npm run cypress:ci' //depreciated
-                sh 'npx cypress install --force'
-                sh 'node_modules/.bin/cypress open'
+                // sh 'npx cypress install --force'
+                // sh 'node_modules/.bin/cypress open'
                 // sh 'node_modules/.bin/cypress run'
                 sh 'cypress run'
             }
