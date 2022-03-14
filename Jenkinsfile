@@ -22,6 +22,7 @@ pipeline {
         stage('e2e Tests') {
             steps {
                 // sh 'npm run cypress:ci' //depreciated
+                sh 'npx cypress install'
                 sh 'cypress run --record'
             }
         }
