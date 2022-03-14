@@ -3,6 +3,10 @@ pipeline {
 
     tools {nodejs "node"}
 
+    parameters {
+        string(name: 'SPEC', defaultValue: 'cypress/integration/1-getting-started', description: 'Ej: cypress/integration/1-getting-started/*.spec.js')
+    }
+
     stages {
         stage('Dependencies') {
             steps {
@@ -14,11 +18,7 @@ pipeline {
                 sh 'npm run build'
             }
         }
-        // stage('Unit Tests') {
-        //     steps {
-        //         sh 'npm run test'
-        //     }
-        // }
+
         stage('e2e Tests') {
             steps {
                 // sh 'npm run cypress:ci' //depreciated
