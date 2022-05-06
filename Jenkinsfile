@@ -6,7 +6,7 @@ pipeline {
     }
   }
 
-    tools {nodejs "node"}
+//     tools {nodejs "node"}
 
     parameters {
         string(name: 'SPEC', defaultValue: 'cypress/integration/1-getting-started', description: 'Ej: cypress/integration/1-getting-started/*.spec.js')
